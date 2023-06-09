@@ -25,8 +25,10 @@ router.post("/", async (req, res) => {
   console.log("creating");
   try {
     const { url } = req.body;
-    console.log(url);
+
     const recipeData = await scrapeRecipeFromUrl(url);
+
+    console.log(recipeData);
 
     if (!recipeData) {
       return res
