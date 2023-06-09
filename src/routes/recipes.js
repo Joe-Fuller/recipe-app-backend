@@ -21,15 +21,16 @@ router.get("/", async (req, res) => {
 
 // Create a new recipe
 router.post("/", async (req, res) => {
-  res.status(100).json({error: "fakeo"})
-  console.log("creating")
+  console.log("creating");
   try {
-    const {url} = req.body;
+    const { url } = req.body;
 
-    const recipeData = await scrapeRecipeFromUrl(url)
+    const recipeData = await scrapeRecipeFromUrl(url);
 
     if (!recipeData) {
-      return res.status(500).json({error: "Failed to scrape recipe from URL"})
+      return res
+        .status(500)
+        .json({ error: "Failed to scrape recipe from URL" });
     }
 
     const recipeId = await createRecipe(req.body);
