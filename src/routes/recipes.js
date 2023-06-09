@@ -7,6 +7,7 @@ const {
   updateRecipe,
   deleteRecipe,
 } = require("../database/recipe");
+const scrapeRecipeFromUrl = require("../utils/recipeScraper");
 
 // Get all recipes
 router.get("/", async (req, res) => {
@@ -21,6 +22,14 @@ router.get("/", async (req, res) => {
 // Create a new recipe
 router.post("/", async (req, res) => {
   try {
+    const {url} = req.body;
+
+    const recipeData = await scrapeRecipeFromUrl(url)
+
+    if (!recipeData) {
+      return res.status(500).json({error: "Failed to scrape recipe from URL"})
+    }
+
     const recipeId = await createRecipe(req.body);
     res
       .status(201)

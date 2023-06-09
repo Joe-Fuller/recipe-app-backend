@@ -40,3 +40,5 @@ async function scrapeRecipeFromUrl(url) {
     return null;
   }
 }
+
+module.exports = scrapeRecipeFromUrl
