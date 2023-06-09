@@ -1,0 +1,60 @@
+const connection = require("./connection");
+
+// Insert a new instruction
+async function createInstruction(recipeId, instructionText) {
+  try {
+    await connection.execute(
+      "INSERT INTO Instruction (instruction_text, recipe_id) VALUES (?, ?)",
+      [instructionText, recipeId]
+    );
+  } catch (error) {
+    console.error("Error creating instruction:", error);
+    throw error;
+  }
+}
+
+// Get instructions by recipe ID
+async function getInstructionsByRecipeId(recipeId) {
+  try {
+    const [rows] = await connection.execute(
+      "SELECT * FROM Instruction WHERE recipe_id = ?",
+      [recipeId]
+    );
+    return rows;
+  } catch (error) {
+    console.error("Error retrieving instructions:", error);
+    throw error;
+  }
+}
+
+// Update an instruction
+async function updateInstruction(instructionId, instructionText) {
+  try {
+    await connection.execute(
+      "UPDATE Instruction SET instruction_text = ? WHERE id = ?",
+      [instructionText, instructionId]
+    );
+  } catch (error) {
+    console.error("Error updating instruction:", error);
+    throw error;
+  }
+}
+
+// Delete an instruction
+async function deleteInstruction(instructionId) {
+  try {
+    await connection.execute("DELETE FROM Instruction WHERE id = ?", [
+      instructionId,
+    ]);
+  } catch (error) {
+    console.error("Error deleting instruction:", error);
+    throw error;
+  }
+}
+
+module.exports = {
+  createInstruction,
+  getInstructionsByRecipeId,
+  updateInstruction,
+  deleteInstruction,
+};
