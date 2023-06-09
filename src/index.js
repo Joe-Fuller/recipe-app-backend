@@ -2,14 +2,11 @@ const express = require("express");
 const recipesRouter = require("./routes/recipes");
 const ingredientsRouter = require("./routes/ingredients");
 const instructionsRouter = require("./routes/instructions");
+const cors = require("cors");
 
 const app = express();
-const port = 3000;
-
-const cors = require("cors");
-app.use(cors());
-
 // Middleware
+app.use(cors());
 app.use(express.json());
 
 // Routes
@@ -22,6 +19,7 @@ app.use((req, res) => {
   res.status(404).json({ error: "Not found" });
 });
 
+const port = 3000;
 // Start the server
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
