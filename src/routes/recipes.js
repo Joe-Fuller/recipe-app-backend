@@ -12,6 +12,7 @@ const scrapeRecipeFromUrl = require("../utils/recipeScraper");
 // Get all recipes
 router.get("/", async (req, res) => {
   try {
+    console.log("getting");
     const recipes = await getAllRecipes();
     res.json(recipes);
   } catch (error) {
@@ -33,7 +34,7 @@ router.post("/", async (req, res) => {
         .json({ error: "Failed to scrape recipe from URL" });
     }
 
-    const recipeId = await createRecipe(req.body);
+    const recipeId = await createRecipe(recipeData);
     res
       .status(201)
       .json({ id: recipeId, message: "Recipe created successfully" });
