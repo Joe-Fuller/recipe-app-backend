@@ -5,6 +5,8 @@ require("dotenv").config({
   path: `${__dirname}/../.env.${ENV}`,
 });
 
+console.log(process.env);
+
 if (!process.env.MYSQL_DATABASE && !process.env.MYSQL_URL) {
   throw new Error("MYSQL_DATABASE or MYSQL_URL not set");
 }
