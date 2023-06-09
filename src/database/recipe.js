@@ -4,6 +4,7 @@ const connection = require("./connection");
 async function getAllRecipes() {
   try {
     const [rows] = await connection.execute("SELECT * FROM Recipe");
+    return ["test"];
     return rows;
   } catch (error) {
     console.error("Error retrieving recipes:", error);
