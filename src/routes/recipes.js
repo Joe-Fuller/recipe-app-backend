@@ -21,6 +21,7 @@ router.get("/", async (req, res) => {
 
 // Create a new recipe
 router.post("/", async (req, res) => {
+  res.status(100).json({error: "fakeo"})
   console.log("creating")
   try {
     const {url} = req.body;
