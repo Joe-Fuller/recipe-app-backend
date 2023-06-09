@@ -1,10 +1,10 @@
 const mysql = require("mysql2/promise");
 
 const connection = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "sqlpass",
-  database: "recipe_app",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
