@@ -13,6 +13,7 @@ async function getAllRecipes() {
 
 // Insert a new recipe
 async function createRecipe(recipeData) {
+  console.log("been asked")
   try {
     const [result] = await connection.execute(
       "INSERT INTO Recipe (recipe_name, time_to_cook) VALUES (?, ?)",
