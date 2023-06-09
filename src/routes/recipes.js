@@ -22,6 +22,7 @@ router.get("/", async (req, res) => {
 
 // Create a new recipe
 router.post("/", async (req, res) => {
+  return res.status(101).json({ error: "not actually error" });
   console.log("creating");
   try {
     const { url } = req.body;
