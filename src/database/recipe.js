@@ -4,7 +4,6 @@ const connection = require("./connection");
 async function getAllRecipes() {
   try {
     const [rows] = await connection.execute("SELECT * FROM Recipe");
-    return ["test"];
     return rows;
   } catch (error) {
     console.error("Error retrieving recipes:", error);
@@ -15,11 +14,30 @@ async function getAllRecipes() {
 // Insert a new recipe
 async function createRecipe(recipeData) {
   try {
+    // Insert recipe data into the Recipe table
     const [result] = await connection.execute(
       "INSERT INTO Recipe (recipe_name, time_to_cook) VALUES (?, ?)",
       [recipeData.name, recipeData.timeToCook]
     );
-    return result.insertId;
+    const recipeId = result.insertId;
+
+    // Insert ingredients into the Ingredients table
+    for (const ingredient of recipeData.ingredients) {
+      await connection.execute(
+        "INSERT INTO Ingredients (recipe_id, ingredient_name) VALUES (?, ?)",
+        [recipeId, ingredient]
+      );
+    }
+
+    // Insert instructions into the Instructions table
+    for (const instruction of recipeData.instructions) {
+      await connection.execute(
+        "INSERT INTO Instructions (recipe_id, instruction_text) VALUES (?, ?)",
+        [recipeId, instruction]
+      );
+    }
+
+    return recipeId;
   } catch (error) {
     console.error("Error creating recipe:", error);
     throw error;
