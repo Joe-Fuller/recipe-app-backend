@@ -6,6 +6,9 @@ const instructionsRouter = require("./routes/instructions");
 const app = express();
 const port = 3000;
 
+const cors = require("cors");
+app.use(cors());
+
 // Middleware
 app.use(express.json());
 
