@@ -1,16 +1,5 @@
-const mysql = require("mysql2/promise");
 const axios = require("axios");
 const cheerio = require("cheerio");
-
-const connection = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "sqlpass",
-  database: "recipe_app",
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
 
 async function scrapeRecipeFromUrl(url) {
   try {
@@ -49,37 +38,5 @@ async function scrapeRecipeFromUrl(url) {
   } catch (error) {
     console.error("Error scraping recipe:", error);
     return null;
-  }
-}
-
-async function storeRecipeData(recipeData) {
-  try {
-    // Insert recipe information into the Recipe table
-    const [recipeResult] = await connection.execute(
-      "INSERT INTO Recipe (recipe_name, time_to_cook) VALUES (?, ?)",
-      [recipeData.name, recipeData.timeToCook]
-    );
-
-    const recipeId = recipeResult.insertId;
-
-    // Insert ingredients into the Ingredient table
-    for (const ingredient of recipeData.ingredients) {
-      await connection.execute(
-        "INSERT INTO Ingredient (ingredient_name, recipe_id) VALUES (?, ?)",
-        [ingredient, recipeId]
-      );
-    }
-
-    // Insert instructions into the Instruction table
-    for (const instruction of recipeData.instructions) {
-      await connection.execute(
-        "INSERT INTO Instruction (instruction_text, recipe_id) VALUES (?, ?)",
-        [instruction, recipeId]
-      );
-    }
-
-    console.log("Recipe data stored successfully");
-  } catch (error) {
-    console.error("Error storing recipe data:", error);
   }
 }
