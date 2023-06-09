@@ -19,6 +19,7 @@ async function createRecipe(recipeData) {
       "INSERT INTO Recipe (recipe_name, time_to_cook) VALUES (?, ?)",
       [recipeData.name, recipeData.timeToCook]
     );
+    console.log(result);
     const recipeId = result.insertId;
 
     // Insert ingredients into the Ingredients table
