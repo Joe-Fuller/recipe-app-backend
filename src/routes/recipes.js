@@ -1,11 +1,22 @@
 const express = require("express");
 const router = express.Router();
 const {
+  getAllRecipes,
   createRecipe,
   getRecipeById,
   updateRecipe,
   deleteRecipe,
 } = require("../database/recipe");
+
+// Get all recipes
+router.get("/", async (req, res) => {
+  try {
+    const recipes = await getAllRecipes();
+    res.json(recipes);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to retrieve recipes" });
+  }
+});
 
 // Create a new recipe
 router.post("/", async (req, res) => {

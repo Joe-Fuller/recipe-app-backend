@@ -14,6 +14,11 @@ app.use("/recipes", recipesRouter);
 app.use("/ingredients", ingredientsRouter);
 app.use("/instructions", instructionsRouter);
 
+// Default route handler
+app.use((req, res) => {
+  res.status(404).json({ error: "Not found" });
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

@@ -1,5 +1,16 @@
 const connection = require("./connection");
 
+// Get all recipes
+async function getAllRecipes() {
+  try {
+    const [rows] = await connection.execute("SELECT * FROM Recipe");
+    return rows;
+  } catch (error) {
+    console.error("Error retrieving recipes:", error);
+    throw error;
+  }
+}
+
 // Insert a new recipe
 async function createRecipe(recipeData) {
   try {
@@ -55,6 +66,7 @@ async function deleteRecipe(recipeId) {
 }
 
 module.exports = {
+  getAllRecipes,
   createRecipe,
   getRecipeById,
   updateRecipe,
