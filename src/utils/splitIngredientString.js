@@ -8,7 +8,7 @@ function splitIngredientString(ingredientString) {
     amount = "1";
     units = "pinch";
     name = ingredientString.slice(8, ingredientString.length);
-    return [name, amount, units];
+    return { name, amount, units };
   }
 
   // each character before the first letter is the amount
@@ -30,7 +30,7 @@ function splitIngredientString(ingredientString) {
   // the remainder is the name
   name = remainingWords.slice(1).join(" ").trim();
 
-  return [name, amount, units];
+  return { name, amount, units };
 }
 
 module.exports = splitIngredientString;
