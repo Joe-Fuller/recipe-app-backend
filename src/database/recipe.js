@@ -7,6 +7,10 @@ async function getAllRecipes() {
     return rows;
   } catch (error) {
     console.error("Error retrieving recipes:", error);
+    console.log("--------------------------");
+    console.log("connection:");
+    console.log(connection);
+    console.log("--------------------");
     throw error;
   }
 }
