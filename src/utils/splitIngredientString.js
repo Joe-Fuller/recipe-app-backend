@@ -3,40 +3,20 @@ function splitIngredientString(ingredientString) {
   let amount = "";
   let units = "";
 
-  // each character before the first letter or space is the amount
+  // each character before the first letter is the amount
   // the next word is the units
   // everything remaining is the name
 
-  const letterOrSpace = /[a-zA-Z ]/;
-  const regex = "abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ,.";
-  let amountDone = false;
-  let unitsDone = false;
+  const re = /[a-z ,.]/i;
 
-  ingredientString.split("").forEach((char) => {
-    // console.log(char, letterOrSpace.test(char));
+  let pos = ingredientString.search(re);
+  amount = ingredientString.slice(0, pos);
 
-    if (!amountDone && !regex.includes(char)) {
-      console.log("its amount");
-      amount += char;
-      return;
-    }
+  let remainingWords = ingredientString.slice(pos).split(" ");
 
-    amountDone = true;
+  units = remainingWords[0];
 
-    if (!unitsDone) {
-      if (char !== " ") {
-        console.log("its units");
-        units += char;
-        return;
-      } else {
-        console.log("units done");
-        unitsDone = true;
-        return;
-      }
-    }
-    console.log("its name");
-    name += char;
-  });
+  name = remainingString.slice(1);
 
   return [name, amount, units];
 }
