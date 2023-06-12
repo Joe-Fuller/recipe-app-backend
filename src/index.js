@@ -16,7 +16,7 @@ app.use("/instructions", instructionsRouter);
 
 // Default route handler
 app.use((req, res) => {
-  res.status(404).json({ error: "Not found" });
+  res.status(404).json({ error: "Not found here" });
 });
 
 const port = process.env.PORT || 3000;
