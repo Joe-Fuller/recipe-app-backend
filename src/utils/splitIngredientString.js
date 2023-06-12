@@ -1,4 +1,4 @@
-export default function SplitIngredientString(ingredientString) {
+function SplitIngredientString(ingredientString) {
   let name = "";
   let amount = "";
   let units = "";
@@ -31,3 +31,5 @@ export default function SplitIngredientString(ingredientString) {
 
   return [name, amount, units];
 }
+
+module.exports = SplitIngredientString;
