@@ -49,9 +49,6 @@ async function scrapeRecipeFromUrl(url) {
       instructions: instructions,
     };
 
-    console.log("Recipe Data: recipeScraper.js line 37");
-    console.log(recipeData);
-
     return recipeData;
   } catch (error) {
     console.error("Error scraping recipe:", error);
