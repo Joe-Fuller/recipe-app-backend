@@ -30,7 +30,7 @@ async function scrapeRecipeFromUrl(url) {
     });
 
     console.log("ingredients: ingredients class");
-    console.log($(".[data-component='IngredientsList']"));
+    console.log($("[data-component='IngredientsList']"));
 
     // Extract instructions
     const instructions = [];
