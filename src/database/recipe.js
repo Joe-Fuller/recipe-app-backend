@@ -6,7 +6,7 @@ async function getAllRecipes() {
   console.log(connection);
   try {
     console.log("in the model");
-    const [rows] = await connection.query("SELECT * FROM Recip");
+    const [rows] = await connection.query("SELECT * FROM Recipe");
     console.log(rows);
     return rows;
   } catch (error) {
