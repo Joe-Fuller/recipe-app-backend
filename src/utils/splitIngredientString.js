@@ -8,12 +8,13 @@ function splitIngredientString(ingredientString) {
   // everything remaining is the name
 
   const letterOrSpace = /[a-zA-Z ]/;
+  const regex = "abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ";
   let unitsDone = false;
 
   ingredientString.split("").forEach((char) => {
-    console.log(char, letterOrSpace.test(char));
+    // console.log(char, letterOrSpace.test(char));
 
-    if (letterOrSpace.test(char)) {
+    if (regex.includes(char)) {
       console.log("its amount");
       amount += char;
       return;
