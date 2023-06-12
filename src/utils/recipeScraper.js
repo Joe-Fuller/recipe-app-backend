@@ -39,7 +39,7 @@ async function scrapeRecipeFromUrl(url) {
 
     // Extract instructions
     const instructions = [];
-    $("[data-placement='MethodList]' > div > ul > li > p").each(
+    $("[data-placement='MethodList'] > div > ul > li > p").each(
       (index, element) => {
         console.log(element);
         const instruction = $(element).text().trim();
