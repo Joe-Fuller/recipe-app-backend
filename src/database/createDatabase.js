@@ -21,6 +21,9 @@ async function createDatabase() {
       },
     });
 
+    // Delete old database
+    await connection.query("DROP DATABASE IF EXISTS recipe_app");
+
     // Create the database
     await connection.query("CREATE DATABASE IF NOT EXISTS recipe_app");
 
