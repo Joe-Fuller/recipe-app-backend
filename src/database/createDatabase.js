@@ -15,7 +15,6 @@ async function createDatabase() {
       port: 4000,
       user: "3Acn8QAwBVJorbf.root",
       password: "Dr0xuKIuTdgNiCTl",
-      database: "test",
       ssl: {
         minVersion: "TLSv1.2",
         rejectUnauthorized: true,
@@ -33,7 +32,7 @@ async function createDatabase() {
         CREATE TABLE IF NOT EXISTS Recipe (
           recipe_id INT PRIMARY KEY AUTO_INCREMENT,
           recipe_name VARCHAR(255),
-          time_to_cook INT
+          time_to_cook VARCHAR(255)
         )
       `);
 
