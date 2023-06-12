@@ -1,7 +1,7 @@
 const mysql = require("mysql2/promise");
 
 const connection = mysql.createPool({
-  host: "cyclic.sh",
+  host: "localhost",
   user: "joe",
   password: "sqlpassword",
   database: "recipe_app",
