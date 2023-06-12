@@ -1,5 +1,6 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
+const { default: SplitIngredientString } = require("./splitIngredientString");
 
 async function scrapeRecipeFromUrl(url) {
   try {
@@ -26,8 +27,8 @@ async function scrapeRecipeFromUrl(url) {
     const ingredients = [];
     $("[data-component='IngredientsList'] > section > ul > li").each(
       (index, element) => {
-        const ingredient = $(element).text().trim();
-        ingredients.push(ingredient);
+        const ingredientText = $(element).text().trim();
+        ingredients.push(SplitIngredientString(ingredientText));
       }
     );
 
