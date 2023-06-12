@@ -4,10 +4,22 @@ async function createDatabase() {
   let connection;
 
   try {
+    // connection = await mysql.createConnection({
+    //   host: "recipe-app.cyclic.app",
+    //   user: "joe",
+    //   password: "sqlpassword",
+    // });
+
     connection = await mysql.createConnection({
-      host: "recipe-app.cyclic.app",
-      user: "joe",
-      password: "sqlpassword",
+      host: "gateway01.us-east-1.prod.aws.tidbcloud.com",
+      port: 4000,
+      user: "3Acn8QAwBVJorbf.root",
+      password: "Dr0xuKIuTdgNiCTl",
+      database: "test",
+      ssl: {
+        minVersion: "TLSv1.2",
+        rejectUnauthorized: true,
+      },
     });
 
     // Create the database
