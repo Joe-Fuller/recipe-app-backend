@@ -16,8 +16,10 @@ router.get("/", async (req, res) => {
     const recipes = await getAllRecipes();
     res.json(recipes);
   } catch (error) {
-    console.log("-------------", error);
+    console.log("--------------------------");
+    console.log("connection:");
     console.log(connection);
+    console.log("--------------------");
     res.status(500).json({ error: "Failed to retrieve recipes" });
   }
 });
