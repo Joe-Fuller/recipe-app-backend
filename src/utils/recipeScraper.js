@@ -30,7 +30,7 @@ async function scrapeRecipeFromUrl(url) {
     });
 
     console.log("ingredients: ingredients class");
-    console.log($("[data-component='IngredientsList'] section"));
+    console.log($("[data-component='IngredientsList'] > section > ul > li"));
 
     // Extract instructions
     const instructions = [];
@@ -39,15 +39,8 @@ async function scrapeRecipeFromUrl(url) {
       instructions.push(instruction);
     });
 
-    // console.log("instructions div ul li div p");
-    // console.log(
-    //   $(".recipe_method-steps")
-    //     .find("div")
-    //     .find("ul")
-    //     .find("li")
-    //     .find("div")
-    //     .find("p")
-    // );
+    console.log("instructions div ul li div p");
+    console.log($("[data-placement]='MethodList' > div > ul > li > p"));
 
     // Create the recipe data object
     const recipeData = {
