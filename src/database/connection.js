@@ -10,7 +10,7 @@ const mysql = require("mysql2/promise");
 //   queueLimit: 0,
 // });
 
-var connection = mysql.createConnection({
+var connection = mysql.createPool({
   host: "gateway01.us-east-1.prod.aws.tidbcloud.com",
   port: 4000,
   user: "3Acn8QAwBVJorbf.root",
@@ -20,6 +20,9 @@ var connection = mysql.createConnection({
     minVersion: "TLSv1.2",
     rejectUnauthorized: true,
   },
+  waitForConnection: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
 
 module.exports = connection;
