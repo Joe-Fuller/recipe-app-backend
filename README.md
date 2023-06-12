@@ -1,1 +1,1 @@
-# recipe-app
+Recipe App API made with MySQL
