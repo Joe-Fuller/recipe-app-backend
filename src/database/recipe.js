@@ -3,7 +3,8 @@ const connection = require("./connection");
 // Get all recipes
 async function getAllRecipes() {
   try {
-    const [rows] = await connection.execute("SELECT * FROM Recipe;");
+    const [rows] = await connection.execute("SELECT * FROM Recipe");
+    console.log(rows);
     return rows;
   } catch (error) {
     console.error("Error retrieving recipes:", error);
