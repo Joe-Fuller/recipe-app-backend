@@ -4,7 +4,7 @@ const connection = mysql.createPool({
   host: "https://recipe-app.cyclic.app/",
   user: "joe",
   password: "sqlpassword",
-  database: "recipe_app",
+  database: "precious-pike-smockCyclicDB",
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
