@@ -14,10 +14,15 @@ async function scrapeRecipeFromUrl(url) {
     // Extract time to cook
     console.log("time to cook: time property");
     console.log($("time"));
-    const timeToCook = $("time").text();
+    let hours = 0;
+    let minutes = 0;
     $("time").each((index, element) => {
-      console.log(element.attribs.datetime);
+      const durationString = element.attribs.datetime;
+      const durationMatch = durationString.match(/PT(\d+)H(\d+)M/);
+      hours += parseInt(durationMatch[1]);
+      minutes += parseInt(durationMatch[2]);
     });
+    const timeToCook = `${hours} hours ${minutes} minutes`;
 
     // Extract ingredients
     const ingredients = [];
@@ -27,7 +32,7 @@ async function scrapeRecipeFromUrl(url) {
     });
 
     console.log("ingredients: ingredients class - section ul li");
-    console.log($(".recipe_ingredients").find("section"));
+    console.log($(".recipe__ingredients"));
 
     // Extract instructions
     const instructions = [];
