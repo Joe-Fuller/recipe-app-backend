@@ -14,9 +14,11 @@ function splitIngredientString(ingredientString) {
 
   let remainingWords = ingredientString.slice(pos).split(" ");
 
-  units = remainingWords[0];
+  console.log(remainingWords);
 
-  name = remainingWords.slice(1).join(" ");
+  units = remainingWords[0].trim();
+
+  name = remainingWords.slice(1).join(" ").trim();
 
   return [name, amount, units];
 }
