@@ -13,9 +13,10 @@ async function scrapeRecipeFromUrl(url) {
 
     // Extract time to cook
     console.log("time to cook: time property");
+    console.log($("time"));
     const timeToCook = $("time").text();
     $("time").each((index, element) => {
-      console.log(element.attribs);
+      // console.log(element.attribs);
     });
 
     // Extract ingredients
@@ -25,8 +26,8 @@ async function scrapeRecipeFromUrl(url) {
       ingredients.push(ingredient);
     });
 
-    console.log("ingredients: ingredients class - .root.0.children");
-    console.log($(".recipe_ingredients.root.0.children"));
+    console.log("ingredients: ingredients class - section ul li");
+    console.log($(".recipe_ingredients section ul li"));
 
     // Extract instructions
     const instructions = [];
@@ -35,8 +36,8 @@ async function scrapeRecipeFromUrl(url) {
       instructions.push(instruction);
     });
 
-    console.log("instructions");
-    console.log($(".recipe_method-steps"));
+    console.log("instructions div ul li div p");
+    console.log($(".recipe_method-steps div ul li div p"));
 
     // Create the recipe data object
     const recipeData = {
