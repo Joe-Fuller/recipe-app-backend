@@ -22,6 +22,9 @@ async function scrapeRecipeFromUrl(url) {
     });
     const timeToCook = `${hours} hours ${minutes} minutes`;
 
+    console.log("ingredients: ingredients class");
+    // console.log($("[data-component='IngredientsList'] > section > ul > li"));
+
     // Extract ingredients
     const ingredients = [];
     $(".recipe_ingredients").each((index, element) => {
@@ -29,18 +32,18 @@ async function scrapeRecipeFromUrl(url) {
       ingredients.push(ingredient);
     });
 
-    console.log("ingredients: ingredients class");
-    console.log($("[data-component='IngredientsList'] > section > ul > li"));
+    console.log("instructions div ul li div p");
+    // console.log($("[data-placement]='MethodList' > div > ul > li > p"));
 
     // Extract instructions
     const instructions = [];
-    $(".recipe_method-steps").each((index, element) => {
-      const instruction = $(element).text().trim();
-      instructions.push(instruction);
-    });
-
-    console.log("instructions div ul li div p");
-    console.log($("[data-placement]='MethodList' > div > ul > li > p"));
+    $("[data-placement]='MethodList' > div > ul > li > p").each(
+      (index, element) => {
+        console.log(element);
+        const instruction = $(element).text().trim();
+        instructions.push(instruction);
+      }
+    );
 
     // Create the recipe data object
     const recipeData = {
