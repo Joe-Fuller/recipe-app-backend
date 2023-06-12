@@ -12,7 +12,7 @@ function splitIngredientString(ingredientString) {
   let pos = ingredientString.search(re);
   amount = ingredientString.slice(0, pos);
 
-  let remainingWords = ingredientString.slice(pos).split(" ");
+  let remainingWords = ingredientString.slice(pos).trim().split(" ");
 
   console.log(remainingWords);
 
