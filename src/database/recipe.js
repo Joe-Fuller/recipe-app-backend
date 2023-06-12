@@ -24,8 +24,8 @@ async function createRecipe(recipeData) {
     // Insert ingredients into the Ingredients table
     for (const ingredient of recipeData.ingredients) {
       await connection.execute(
-        "INSERT INTO Ingredients (recipe_id, ingredient_name) VALUES (?, ?)",
-        [recipeId, ingredient]
+        "INSERT INTO Ingredients (recipe_id, ingredient_name, ingredient_amount, ingredient_units) VALUES (?, ?, ?, ?)",
+        [recipeId, ingredient.name, ingredient.amount, ingredient.units]
       );
     }
 
