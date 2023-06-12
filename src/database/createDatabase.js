@@ -5,9 +5,9 @@ async function createDatabase() {
 
   try {
     connection = await mysql.createConnection({
-      host: "recipe-app.cyclic.app",
+      host: "localhost",
       user: "joe",
-      password: "sqlpassword",
+      password: "sqlpass",
     });
 
     // Create the database
