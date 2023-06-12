@@ -7,13 +7,13 @@ function splitIngredientString(ingredientString) {
   // the next word is the units
   // everything remaining is the name
 
-  const letterOrSpace = /[a-zA-Z ]/g;
+  const letterOrSpace = /[a-zA-Z ]/;
   let unitsDone = false;
 
   ingredientString.split("").forEach((char) => {
     console.log(char, letterOrSpace.test(char));
 
-    if (!letterOrSpace.test(char)) {
+    if (letterOrSpace.test(char)) {
       console.log("its amount");
       amount += char;
       return;
