@@ -16,7 +16,7 @@ function splitIngredientString(ingredientString) {
 
   units = remainingWords[0];
 
-  name = remainingString.slice(1);
+  name = remainingWords.slice(1).join(" ");
 
   return [name, amount, units];
 }
