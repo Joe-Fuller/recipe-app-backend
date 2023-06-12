@@ -11,6 +11,8 @@ function splitIngredientString(ingredientString) {
   let unitsDone = false;
 
   ingredientString.split("").forEach((char) => {
+    console.log(char, letterOrSpace.test(char));
+
     if (!letterOrSpace.test(char)) {
       amount += char;
       return;
