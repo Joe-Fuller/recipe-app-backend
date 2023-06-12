@@ -15,12 +15,11 @@ var connection = mysql.createPool({
   port: 4000,
   user: "3Acn8QAwBVJorbf.root",
   password: "Dr0xuKIuTdgNiCTl",
-  database: "test",
+  database: "recipe_app",
   ssl: {
     minVersion: "TLSv1.2",
     rejectUnauthorized: true,
   },
-  waitForConnection: true,
   connectionLimit: 10,
   queueLimit: 0,
 });
