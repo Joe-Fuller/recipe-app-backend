@@ -2,13 +2,8 @@ const connection = require("./connection");
 
 // Get all recipes
 async function getAllRecipes() {
-  console.log("getting recipes");
-  console.log(connection);
-  console.log(connection.pool);
   try {
-    console.log("in the model");
     const [rows] = await connection.query("SELECT * FROM Recipe");
-    console.log(rows);
     return rows;
   } catch (error) {
     console.error("Error retrieving recipes:", error);
@@ -19,14 +14,12 @@ async function getAllRecipes() {
 // Insert a new recipe
 async function createRecipe(recipeData) {
   try {
-    console.log("pre-result");
     console.log(process.env);
     // Insert recipe data into the Recipe table
     const [result] = await connection.execute(
       "INSERT INTO Recipe (recipe_name, time_to_cook) VALUES (?, ?)",
       [recipeData.name, recipeData.timeToCook]
     );
-    console.log(result);
     const recipeId = result.insertId;
 
     // Insert ingredients into the Ingredients table

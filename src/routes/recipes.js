@@ -12,9 +12,7 @@ const scrapeRecipeFromUrl = require("../utils/recipeScraper");
 // Get all recipes
 router.get("/", async (req, res) => {
   try {
-    console.log("getting");
     const recipes = await getAllRecipes();
-    console.log(recipes);
     res.json(recipes);
   } catch (error) {
     res.status(500).json({ error: "Failed to retrieve recipes" });
