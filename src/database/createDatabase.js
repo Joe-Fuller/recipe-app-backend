@@ -44,7 +44,7 @@ async function createDatabase() {
         CREATE TABLE IF NOT EXISTS Ingredients (
           ingredient_id INT PRIMARY KEY AUTO_INCREMENT,
           ingredient_name VARCHAR(255),
-          ingredient_amount INT,
+          ingredient_amount VARCHAR(255),
           ingredient_units VARCHAR(255),
           recipe_id INT,
           FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id) ON DELETE CASCADE

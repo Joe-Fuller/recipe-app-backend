@@ -5,7 +5,8 @@
   "main": "src/listen.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/listen.js"
+    "start": "node src/listen.js",
+    "resetDatabase": "node src/database/createDatabase.js"
   },
   "author": "",
   "license": "ISC",
