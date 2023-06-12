@@ -3,7 +3,7 @@ const connection = require("./connection");
 // Get all recipes
 async function getAllRecipes() {
   try {
-    const [rows] = await connection.execute("SELECT * FROM Recipe");
+    const [rows] = await connection.execute("SELECT * FROM Recipes");
     return rows;
   } catch (error) {
     console.error("Error retrieving recipes:", error);
@@ -16,7 +16,7 @@ async function createRecipe(recipeData) {
   try {
     // Insert recipe data into the Recipe table
     const [result] = await connection.execute(
-      "INSERT INTO Recipe (recipe_name, time_to_cook) VALUES (?, ?)",
+      "INSERT INTO Recipes (recipe_name, time_to_cook) VALUES (?, ?)",
       [recipeData.name, recipeData.timeToCook]
     );
     const recipeId = result.insertId;
@@ -48,7 +48,7 @@ async function createRecipe(recipeData) {
 async function getRecipeById(recipeId) {
   try {
     const [rows] = await connection.execute(
-      "SELECT * FROM Recipe WHERE id = ?",
+      "SELECT * FROM Recipes WHERE id = ?",
       [recipeId]
     );
     if (rows.length === 0) {
@@ -65,7 +65,7 @@ async function getRecipeById(recipeId) {
 async function updateRecipe(recipeId, recipeData) {
   try {
     await connection.execute(
-      "UPDATE Recipe SET recipe_name = ?, time_to_cook = ? WHERE id = ?",
+      "UPDATE Recipes SET recipe_name = ?, time_to_cook = ? WHERE id = ?",
       [recipeData.name, recipeData.timeToCook, recipeId]
     );
   } catch (error) {
@@ -77,7 +77,7 @@ async function updateRecipe(recipeId, recipeData) {
 // Delete a recipe
 async function deleteRecipe(recipeId) {
   try {
-    await connection.execute("DELETE FROM Recipe WHERE id = ?", [recipeId]);
+    await connection.execute("DELETE FROM Recipes WHERE id = ?", [recipeId]);
   } catch (error) {
     console.error("Error deleting recipe:", error);
     throw error;

@@ -4,7 +4,7 @@ const connection = require("./connection");
 async function createInstruction(recipeId, instructionText) {
   try {
     await connection.execute(
-      "INSERT INTO Instruction (instruction_text, recipe_id) VALUES (?, ?)",
+      "INSERT INTO Instructions (instruction_text, recipe_id) VALUES (?, ?)",
       [instructionText, recipeId]
     );
   } catch (error) {
@@ -17,7 +17,7 @@ async function createInstruction(recipeId, instructionText) {
 async function getInstructionsByRecipeId(recipeId) {
   try {
     const [rows] = await connection.execute(
-      "SELECT * FROM Instruction WHERE recipe_id = ?",
+      "SELECT * FROM Instructions WHERE recipe_id = ?",
       [recipeId]
     );
     return rows;
@@ -31,7 +31,7 @@ async function getInstructionsByRecipeId(recipeId) {
 async function updateInstruction(instructionId, instructionText) {
   try {
     await connection.execute(
-      "UPDATE Instruction SET instruction_text = ? WHERE id = ?",
+      "UPDATE Instructions SET instruction_text = ? WHERE id = ?",
       [instructionText, instructionId]
     );
   } catch (error) {
@@ -43,7 +43,7 @@ async function updateInstruction(instructionId, instructionText) {
 // Delete an instruction
 async function deleteInstruction(instructionId) {
   try {
-    await connection.execute("DELETE FROM Instruction WHERE id = ?", [
+    await connection.execute("DELETE FROM Instructions WHERE id = ?", [
       instructionId,
     ]);
   } catch (error) {

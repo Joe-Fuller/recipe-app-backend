@@ -32,7 +32,7 @@ async function createDatabase() {
 
     // Create the Recipe table
     await connection.query(`
-        CREATE TABLE IF NOT EXISTS Recipe (
+        CREATE TABLE IF NOT EXISTS Recipes (
           recipe_id INT PRIMARY KEY AUTO_INCREMENT,
           recipe_name VARCHAR(255),
           time_to_cook VARCHAR(255)
@@ -41,7 +41,7 @@ async function createDatabase() {
 
     // Create the Ingredient table
     await connection.query(`
-        CREATE TABLE IF NOT EXISTS Ingredient (
+        CREATE TABLE IF NOT EXISTS Ingredients (
           ingredient_id INT PRIMARY KEY AUTO_INCREMENT,
           ingredient_name VARCHAR(255),
           recipe_id INT,
@@ -51,7 +51,7 @@ async function createDatabase() {
 
     // Create the Instruction table
     await connection.query(`
-        CREATE TABLE IF NOT EXISTS Instruction (
+        CREATE TABLE IF NOT EXISTS Instructions (
           instruction_id INT PRIMARY KEY AUTO_INCREMENT,
           instruction_text TEXT,
           recipe_id INT,

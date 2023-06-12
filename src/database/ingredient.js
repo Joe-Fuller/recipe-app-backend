@@ -4,7 +4,7 @@ const connection = require("./connection");
 async function createIngredient(recipeId, ingredientName) {
   try {
     await connection.execute(
-      "INSERT INTO Ingredient (ingredient_name, recipe_id) VALUES (?, ?)",
+      "INSERT INTO Ingredients (ingredient_name, recipe_id) VALUES (?, ?)",
       [ingredientName, recipeId]
     );
   } catch (error) {
@@ -17,7 +17,7 @@ async function createIngredient(recipeId, ingredientName) {
 async function getIngredientsByRecipeId(recipeId) {
   try {
     const [rows] = await connection.execute(
-      "SELECT * FROM Ingredient WHERE recipe_id = ?",
+      "SELECT * FROM Ingredients WHERE recipe_id = ?",
       [recipeId]
     );
     return rows;
@@ -31,7 +31,7 @@ async function getIngredientsByRecipeId(recipeId) {
 async function updateIngredient(ingredientId, ingredientName) {
   try {
     await connection.execute(
-      "UPDATE Ingredient SET ingredient_name = ? WHERE id = ?",
+      "UPDATE Ingredients SET ingredient_name = ? WHERE id = ?",
       [ingredientName, ingredientId]
     );
   } catch (error) {
@@ -43,7 +43,7 @@ async function updateIngredient(ingredientId, ingredientName) {
 // Delete an ingredient
 async function deleteIngredient(ingredientId) {
   try {
-    await connection.execute("DELETE FROM Ingredient WHERE id = ?", [
+    await connection.execute("DELETE FROM Ingredients WHERE id = ?", [
       ingredientId,
     ]);
   } catch (error) {
