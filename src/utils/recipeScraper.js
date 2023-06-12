@@ -1,6 +1,6 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const { default: SplitIngredientString } = require("./splitIngredientString");
+import SplitIngredientString from "./splitIngredientString";
 
 async function scrapeRecipeFromUrl(url) {
   try {
