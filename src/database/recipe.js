@@ -2,6 +2,7 @@ const connection = require("./connection");
 
 // Get all recipes
 async function getAllRecipes() {
+  console.log("getting recipes");
   try {
     console.log("in the model");
     const [rows] = await connection.execute("SELECT * FROM Recipe");
