@@ -36,7 +36,11 @@ router.post("/", async (req, res) => {
 
     res
       .status(201)
-      .json({ id: recipeId, message: "Recipe created successfully" });
+      .json({
+        id: recipeId,
+        recipe: recipeData,
+        message: "Recipe created successfully",
+      });
   } catch (error) {
     res.status(500).json({ error: "Failed to create recipe" });
   }
