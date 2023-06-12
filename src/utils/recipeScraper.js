@@ -10,10 +10,13 @@ async function scrapeRecipeFromUrl(url) {
 
     // Extract recipe information
     const recipeName = $("h1").text();
-    const timeToCook = $("time").text();
 
+    // Extract time to cook
     console.log("time to cook: time property");
-    console.log($("time"));
+    const timeToCook = $("time").text();
+    $("time").each((index, element) => {
+      console.log(index, element);
+    });
 
     // Extract ingredients
     const ingredients = [];
