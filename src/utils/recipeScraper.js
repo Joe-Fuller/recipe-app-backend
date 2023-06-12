@@ -27,17 +27,19 @@ async function scrapeRecipeFromUrl(url) {
 
     // Extract ingredients
     const ingredients = [];
-    $(".recipe_ingredients").each((index, element) => {
-      const ingredient = $(element).text().trim();
-      ingredients.push(ingredient);
-    });
+    $("[data-component='IngredientsList'] > section > ul > li").each(
+      (index, element) => {
+        const ingredient = $(element).text().trim();
+        ingredients.push(ingredient);
+      }
+    );
 
     console.log("instructions div ul li div p");
-    // console.log($("[data-placement]='MethodList' > div > ul > li > p"));
+    // console.log($("[data-placement='MethodList]' > div > ul > li > p"));
 
     // Extract instructions
     const instructions = [];
-    $("[data-placement]='MethodList' > div > ul > li > p").each(
+    $("[data-placement='MethodList]' > div > ul > li > p").each(
       (index, element) => {
         console.log(element);
         const instruction = $(element).text().trim();
