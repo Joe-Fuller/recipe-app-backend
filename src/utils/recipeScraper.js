@@ -10,18 +10,24 @@ async function scrapeRecipeFromUrl(url) {
 
     // Extract recipe information
     const recipeName = $("h1").text();
-    const timeToCook = $(".cook-time").text();
+    const timeToCook = $("time").text();
+
+    console.log("time to cook: time property");
+    console.log($("time"));
 
     // Extract ingredients
     const ingredients = [];
-    $(".ingredient").each((index, element) => {
+    $(".recipe_ingredients").each((index, element) => {
       const ingredient = $(element).text().trim();
       ingredients.push(ingredient);
     });
 
+    console.log("ingredients: ingredients class");
+    console.log($(".recipe_ingredients"));
+
     // Extract instructions
     const instructions = [];
-    $(".instruction").each((index, element) => {
+    $(".recipe_method-steps").each((index, element) => {
       const instruction = $(element).text().trim();
       instructions.push(instruction);
     });
