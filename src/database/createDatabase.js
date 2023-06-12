@@ -45,7 +45,7 @@ async function createDatabase() {
           ingredient_id INT PRIMARY KEY AUTO_INCREMENT,
           ingredient_name VARCHAR(255),
           ingredient_amount INT,
-          ingredient_units VARCHAR(255)
+          ingredient_units VARCHAR(255),
           recipe_id INT,
           FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id) ON DELETE CASCADE
         )

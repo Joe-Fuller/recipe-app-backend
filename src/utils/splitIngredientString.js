@@ -7,7 +7,7 @@ function splitIngredientString(ingredientString) {
   if (ingredientString.split(" ").slice(0, 2).join(" ") === "a pinch") {
     amount = "1";
     units = "pinch";
-    name = ingredientString.slice(7, ingredientString.length - 1);
+    name = ingredientString.slice(8, ingredientString.length);
     return [name, amount, units];
   }
 
