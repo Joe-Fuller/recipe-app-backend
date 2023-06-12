@@ -10,7 +10,7 @@ function splitIngredientString(ingredientString) {
   const letterOrSpace = /[a-zA-Z ]/g;
   let unitsDone = false;
 
-  ingredientString.forEach((char) => {
+  ingredientString.split("").forEach((char) => {
     if (!letterOrSpace.test(char)) {
       amount += char;
       return;
