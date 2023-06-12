@@ -4,9 +4,7 @@ const cheerio = require("cheerio");
 async function scrapeRecipeFromUrl(url) {
   try {
     const response = await axios.get(url);
-    console.log(response);
     const html = response.data;
-    console.log(html);
 
     const $ = cheerio.load(html);
 
