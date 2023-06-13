@@ -72,7 +72,9 @@ async function scrapeRecipeFromUrl(url) {
     );
 
     // Extract image link
-    const imageLink = $(".image__img").attr("src");
+    const imageLink = $(
+      ".post-header__image-container > div > div > div > picture > img"
+    ).attr("src");
 
     // Create the recipe data object
     const recipeData = {
