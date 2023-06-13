@@ -64,6 +64,7 @@ async function getRecipeById(recipeId) {
 // Update a recipe
 async function updateRecipe(recipeId, updatedRecipe) {
   try {
+    console.log(recipeId, updatedRecipe);
     // Update recipe data in the Recipe table
     await connection.execute(
       "UPDATE Recipes SET recipe_name = ?, time_to_cook = ? WHERE recipe_id = ?",
