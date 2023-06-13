@@ -13,13 +13,14 @@ const aggregateIngredientAmounts = (ingredients) => {
 
     if (existingIngredient) {
       console.log(ingredient.name + " already exists");
-      existingIngredient.amount =
-        parseFloat(existingIngredient.amount) + parseFloat(ingredient.amount);
+      existingIngredient.amount = (
+        parseFloat(existingIngredient.amount) + parseFloat(ingredient.amount)
+      ).toString();
     } else {
       console.log(ingredient.name + " does not exist");
       ingredientMap.set(key, {
         ...ingredient,
-        amount: parseFloat(ingredient.amount),
+        amount: ingredient.amount,
       });
     }
   }
