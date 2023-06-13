@@ -31,11 +31,7 @@ router.post("/", async (req, res) => {
         .json({ error: "Failed to scrape recipe from URL" });
     }
 
-    console.log(recipeData);
-
     const recipeId = await createRecipe(recipeData);
-
-    console.log(recipeId);
 
     res.status(201).json({
       id: recipeId,
@@ -64,6 +60,7 @@ router.get("/:id", async (req, res) => {
 
 // Update a recipe
 router.put("/:id", async (req, res) => {
+  console.log("updating");
   const recipeId = req.params.id;
   try {
     await updateRecipe(recipeId, req.body);
