@@ -60,7 +60,6 @@ router.get("/:id", async (req, res) => {
 
 // Update a recipe
 router.put("/:id", async (req, res) => {
-  console.log("updating");
   const recipeId = req.params.id;
   try {
     await updateRecipe(recipeId, req.body);

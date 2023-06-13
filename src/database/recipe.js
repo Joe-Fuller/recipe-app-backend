@@ -48,7 +48,7 @@ async function createRecipe(recipeData) {
 async function getRecipeById(recipeId) {
   try {
     const [rows] = await connection.execute(
-      "SELECT * FROM Recipes WHERE id = ?",
+      "SELECT * FROM Recipes WHERE recipe_id = ?",
       [recipeId]
     );
     if (rows.length === 0) {
