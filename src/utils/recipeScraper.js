@@ -4,9 +4,9 @@ const splitIngredientString = require("./splitIngredientString");
 
 async function scrapeRecipeFromUrl(url) {
   try {
-    console.log("scraping");
+    console.log("scraping in scraper");
     const response = await axios.get(url);
-    console.log("scraped");
+    console.log("got a response");
     const html = response.data;
 
     const $ = cheerio.load(html);
