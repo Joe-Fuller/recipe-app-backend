@@ -19,7 +19,7 @@ const aggregateIngredientAmounts = (ingredients) => {
       console.log(ingredient.name + " does not exist");
       ingredientMap.set(key, {
         ...ingredient,
-        amount: ingredient.amount.toString(),
+        amount: parseFloat(ingredient.amount),
       });
     }
   }
