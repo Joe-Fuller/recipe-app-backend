@@ -12,9 +12,12 @@ const aggregateIngredientAmounts = (ingredients) => {
     const existingIngredient = ingredientMap.get(key);
 
     if (existingIngredient) {
-      existingIngredient.amount += parseInt(ingredient.amount);
+      existingIngredient.amount += parseFloat(ingredient.amount);
     } else {
-      ingredientMap.set(key, { ...ingredient });
+      ingredientMap.set(key, {
+        ...ingredient,
+        amount: parseFloat(ingredient.amount),
+      });
     }
   }
 
