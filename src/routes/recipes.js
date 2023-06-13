@@ -22,9 +22,9 @@ router.get("/", async (req, res) => {
 // Create a new recipe
 router.post("/", async (req, res) => {
   try {
-    const { url } = req.body;
+    const { recipeData } = req.body;
 
-    const recipeData = await scrapeRecipeFromUrl(url);
+    // const recipeData = await scrapeRecipeFromUrl(url);
 
     if (!recipeData) {
       return res
@@ -34,13 +34,11 @@ router.post("/", async (req, res) => {
 
     const recipeId = await createRecipe(recipeData);
 
-    res
-      .status(201)
-      .json({
-        id: recipeId,
-        recipe: recipeData,
-        message: "Recipe created successfully",
-      });
+    res.status(201).json({
+      id: recipeId,
+      recipe: recipeData,
+      message: "Recipe created successfully",
+    });
   } catch (error) {
     res.status(500).json({ error: "Failed to create recipe" });
   }
