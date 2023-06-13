@@ -7,7 +7,7 @@ function splitIngredientString(ingredientString) {
   if (ingredientString.split(" ").slice(0, 2).join(" ") === "a pinch") {
     amount = "1";
     units = "pinch";
-    name = ingredientString.slice(8, ingredientString.length);
+    name = ingredientString.slice(8, ingredientString.length).trim();
     return { name, amount, units };
   }
 
@@ -19,7 +19,7 @@ function splitIngredientString(ingredientString) {
 
   // the amount is the bit before the regex match
   let pos = ingredientString.search(re);
-  amount = ingredientString.slice(0, pos);
+  amount = ingredientString.slice(0, pos).trim();
 
   // split the string with the amount removed into words
   let remainingWords = ingredientString.slice(pos).trim().split(" ");
