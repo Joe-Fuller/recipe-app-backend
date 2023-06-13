@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     console.log("posting");
-    console.log(scrapeRecipeFromUrl);
+    console.log(scrapeRecipeFromUrl(url));
     const recipeData = await scrapeRecipeFromUrl(url);
     console.log("scraped", recipeData);
 
