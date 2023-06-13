@@ -62,7 +62,8 @@ async function getRecipeById(recipeId) {
 }
 
 // Update a recipe
-async function updateRecipe(recipeId, updatedRecipe) {
+async function updateRecipe(recipeId, recipeData) {
+  const updatedRecipe = recipeData.recipeData;
   try {
     console.log(recipeId, updatedRecipe);
     // Update recipe data in the Recipe table
