@@ -71,12 +71,16 @@ async function scrapeRecipeFromUrl(url) {
       }
     );
 
+    // Extract image link
+    const imageLink = $(".image__img").attr("src");
+
     // Create the recipe data object
     const recipeData = {
       name: recipeName,
       timeToCook: timeToCook,
       ingredients: aggregatedIngredients,
       instructions: instructions,
+      imageLink: imageLink,
     };
 
     return recipeData;

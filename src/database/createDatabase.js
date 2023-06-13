@@ -35,7 +35,8 @@ async function createDatabase() {
         CREATE TABLE IF NOT EXISTS Recipes (
           recipe_id INT PRIMARY KEY AUTO_INCREMENT,
           recipe_name VARCHAR(255),
-          time_to_cook VARCHAR(255)
+          time_to_cook VARCHAR(255),
+          image_link VARCHAR(255)
         )
       `);
 
