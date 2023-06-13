@@ -7,7 +7,7 @@ const {
   updateRecipe,
   deleteRecipe,
 } = require("../database/recipe");
-const scrapeRecipeFromUrl = require("../utils/recipeScraper");
+const scrapeRecipeFromUrl = require("../utils/recipeScraper.js");
 
 // Get all recipes
 router.get("/", async (req, res) => {
