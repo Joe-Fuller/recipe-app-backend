@@ -2,6 +2,29 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const splitIngredientString = require("./splitIngredientString");
 
+// Helper function to aggregate ingredient amounts
+const aggregateIngredientAmounts = (ingredients) => {
+  const aggregatedIngredients = [];
+  const ingredientMap = new Map();
+
+  for (const ingredient of ingredients) {
+    const key = `${ingredient.name} ${ingredient.units}`;
+    const existingIngredient = ingredientMap.get(key);
+
+    if (existingIngredient) {
+      existingIngredient.amount += ingredient.amount;
+    } else {
+      ingredientMap.set(key, { ...ingredient });
+    }
+  }
+
+  for (const [, value] of ingredientMap) {
+    aggregatedIngredients.push(value);
+  }
+
+  return aggregatedIngredients;
+};
+
 async function scrapeRecipeFromUrl(url) {
   try {
     const response = await axios.get(url);
@@ -32,6 +55,8 @@ async function scrapeRecipeFromUrl(url) {
       }
     );
 
+    const aggregatedIngredients = aggregateIngredientAmounts(ingredients);
+
     // Extract instructions
     const instructions = [];
     $("[data-placement='MethodList'] > div > ul > li > div > p").each(
@@ -45,7 +70,7 @@ async function scrapeRecipeFromUrl(url) {
     const recipeData = {
       name: recipeName,
       timeToCook: timeToCook,
-      ingredients: ingredients,
+      ingredients: aggregatedIngredients,
       instructions: instructions,
     };
 
