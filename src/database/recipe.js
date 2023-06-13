@@ -17,7 +17,7 @@ async function createRecipe(recipeData) {
     // Insert recipe data into the Recipe table
     const [result] = await connection.execute(
       "INSERT INTO Recipes (recipe_name, time_to_cook, image_link) VALUES (?, ?, ?)",
-      [recipeData.name, recipeData.timeToCook, recipe.imageLink]
+      [recipeData.name, recipeData.timeToCook, recipeData.imageLink]
     );
     const recipeId = result.insertId;
 
