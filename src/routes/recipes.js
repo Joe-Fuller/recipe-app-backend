@@ -21,9 +21,7 @@ router.get("/", async (req, res) => {
 
 // Create a new recipe
 router.post("/", async (req, res) => {
-  console.log("creating");
   try {
-    console.log("scraping");
     const recipeData = await scrapeRecipeFromUrl(url);
 
     if (!recipeData) {
