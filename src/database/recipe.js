@@ -62,12 +62,41 @@ async function getRecipeById(recipeId) {
 }
 
 // Update a recipe
-async function updateRecipe(recipeId, recipeData) {
+async function updateRecipe(recipeId, updatedRecipe) {
   try {
+    // Update recipe data in the Recipe table
     await connection.execute(
-      "UPDATE Recipes SET recipe_name = ?, time_to_cook = ? WHERE id = ?",
-      [recipeData.name, recipeData.timeToCook, recipeId]
+      "UPDATE Recipes SET recipe_name = ?, time_to_cook = ? WHERE recipe_id = ?",
+      [updatedRecipe.name, updatedRecipe.timeToCook, recipeId]
     );
+
+    // Delete existing ingredients for the recipe
+    await connection.execute("DELETE FROM Ingredients WHERE recipe_id = ?", [
+      recipeId,
+    ]);
+
+    // Insert updated ingredients into the Ingredients table
+    for (const ingredient of updatedRecipe.ingredients) {
+      await connection.execute(
+        "INSERT INTO Ingredients (recipe_id, ingredient_name, ingredient_amount, ingredient_units) VALUES (?, ?, ?, ?)",
+        [recipeId, ingredient.name, ingredient.amount, ingredient.units]
+      );
+    }
+
+    // Delete existing instructions for the recipe
+    await connection.execute("DELETE FROM Instructions WHERE recipe_id = ?", [
+      recipeId,
+    ]);
+
+    // Insert updated instructions into the Instructions table
+    for (const instruction of updatedRecipe.instructions) {
+      await connection.execute(
+        "INSERT INTO Instructions (recipe_id, instruction_text) VALUES (?, ?)",
+        [recipeId, instruction]
+      );
+    }
+
+    console.log("Recipe updated successfully");
   } catch (error) {
     console.error("Error updating recipe:", error);
     throw error;
