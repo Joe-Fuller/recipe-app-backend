@@ -3,6 +3,7 @@ const cheerio = require("cheerio");
 const splitIngredientString = require("./splitIngredientString");
 
 async function scrapeRecipeFromUrl(url) {
+  console.log("scrape");
   try {
     console.log("scraping in scraper");
     const response = await axios.get(url);
