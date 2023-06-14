@@ -104,8 +104,6 @@ async function scrapeRecipeFromUrl(url) {
 
     const recipeData = findScriptWithSchema($);
 
-    console.log(recipeData);
-
     // Access the recipe data
     const recipeName = recipeData.name;
     let recipeImage = recipeData.image.url || recipeData.image;
@@ -140,8 +138,6 @@ async function scrapeRecipeFromUrl(url) {
       instructions: formattedInstructions,
       imageLink: recipeImage,
     };
-
-    console.log(recipe);
 
     return recipe;
   } catch (error) {
