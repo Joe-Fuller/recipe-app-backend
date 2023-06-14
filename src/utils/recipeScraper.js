@@ -68,7 +68,9 @@ function findScriptWithSchema($) {
   // Iterate over each script tag
   for (let i = 0; i < scriptTags.length; i++) {
     if (i === 3) {
+      console.log("====================");
       console.log(scriptTags[i]);
+      console.log("====================");
     }
     const scriptContent = $(scriptTags[i]).html();
 
@@ -101,7 +103,9 @@ async function scrapeRecipeFromUrl(url) {
     const scriptElement = $('script[data-testid="page-schema"]');
 
     const script = findScriptWithSchema($);
+    console.log("====================");
     console.log(script);
+    console.log("====================");
 
     // Extract the JSON string from the script element
     const jsonString = scriptElement.text();
