@@ -34,12 +34,13 @@ async function scrapeRecipeFromUrl(url) {
   try {
     const response = await axios.get(url);
     const html = response.data;
+    let recipeInfo;
 
     const $ = cheerio.load(html);
 
     // This gets all the recipe data according to a Google schema, use this always
     $('[data-testid="page-schema"]').each((index, element) => {
-      const recipeInfo = $(element).text();
+      recipeInfo = $(element).text();
     });
 
     console.log(Object.keys(recipeInfo));
