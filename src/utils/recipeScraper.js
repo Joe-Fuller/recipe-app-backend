@@ -107,7 +107,7 @@ async function scrapeRecipeFromUrl(url) {
 
     // Access the recipe data and decode HTML entities
     const recipeName = he.decode(recipeData.name);
-    const recipeImage = he.decode(recipeData.image.url || recipeData.image);
+    const recipeImage = recipeData.image.url || recipeData.image;
     const recipeIngredients = recipeData.recipeIngredient.map((ingredient) =>
       he.decode(ingredient)
     );
