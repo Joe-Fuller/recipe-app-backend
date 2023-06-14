@@ -72,19 +72,17 @@ function findScriptWithSchema($) {
     // It just looks for recipeInstructions, should be specific enough
     try {
       const schema = JSON.parse(scriptContent);
-      console.log(schema);
 
+      // Check if the script has the desired properties
       if (schema && schema.recipeInstructions) {
-        console.log("got in");
-        // Check if the script has the desired properties
-        // You can add your specific condition here
         return schema;
       } else if (schema && schema["@graph"]) {
+        // Some are arranged weirdly
+        // This searches them
         const graph = schema["@graph"];
 
         for (let j = 0; j < graph.length; j++) {
           if (graph[j] && graph[j].recipeInstructions) {
-            console.log("Got in");
             return graph[j];
           }
         }
@@ -105,6 +103,8 @@ async function scrapeRecipeFromUrl(url) {
     const $ = cheerio.load(html);
 
     const recipeData = findScriptWithSchema($);
+
+    console.log(recipeData);
 
     // Access the recipe data
     const recipeName = recipeData.name;
