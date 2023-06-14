@@ -45,9 +45,9 @@ async function scrapeRecipeFromUrl(url) {
     const recipeInfo = $('[data-testid="page-schema"]')[0];
 
     console.log(recipeInfo);
-    // console.log(recipeInfo.name);
-    // console.log(recipeInfo.prepTime);
-    // console.log(recipeInfo.recipeIngredient);
+    console.log(recipeInfo.name);
+    console.log(recipeInfo.prepTime);
+    console.log(recipeInfo.recipeIngredient);
 
     // Extract recipe information
     const recipeName = recipeInfo.name;
