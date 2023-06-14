@@ -37,12 +37,15 @@ async function scrapeRecipeFromUrl(url) {
 
     const $ = cheerio.load(html);
 
+    // This gets all the recipe data according to a Google schema, use this always
     $('[data-testid="page-schema"]').each((index, element) => {
-      console.log($(element).text());
+      const recipeData = $(element).text();
     });
 
+    console.log(Object.keys(recipeData));
+
     // Extract recipe information
-    const recipeName = $("h1").text();
+    const recipeName = recipeData.name;
 
     // Extract time to cook
     let hours = 0;
