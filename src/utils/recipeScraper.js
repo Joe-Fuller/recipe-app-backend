@@ -50,7 +50,7 @@ async function scrapeRecipeFromUrl(url) {
 
     console.log(recipeInfo);
     console.log("========================");
-    console.log(recipeInfo.children);
+    console.log(recipeInfo.children["0"]);
     console.log("========================");
     console.log(recipeInfo.children.text);
     console.log("========================");
