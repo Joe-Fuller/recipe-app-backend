@@ -1,9 +1,10 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const splitIngredientString = require("./splitIngredientString");
+const he = require("he");
 
 // Helper function to aggregate ingredient amounts
-const aggregateIngredientAmounts = (ingredients) => {
+function aggregateIngredientAmounts(ingredients) {
   const aggregatedIngredients = [];
   const ingredientMap = new Map();
 
@@ -28,7 +29,7 @@ const aggregateIngredientAmounts = (ingredients) => {
   }
 
   return aggregatedIngredients;
-};
+}
 
 const combineTime = (prepTime, cookTime) => {
   // Regular expression to extract hours and minutes from time strings
@@ -99,6 +100,7 @@ async function scrapeRecipeFromUrl(url) {
   try {
     const response = await axios.get(url);
     const html = response.data;
+    he.decode(html);
 
     const $ = cheerio.load(html);
 
