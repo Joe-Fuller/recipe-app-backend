@@ -69,9 +69,9 @@ function findScriptWithSchema($) {
   for (let i = 0; i < scriptTags.length; i++) {
     const scriptContent = $(scriptTags[i]).html();
 
-    console.log("==============");
-    console.log(scriptContent);
-    console.log("==============");
+    // console.log("==============");
+    // console.log(scriptContent);
+    // console.log("==============");
 
     // It just looks for recipeInstructions, should be specific enough
     try {
@@ -79,6 +79,7 @@ function findScriptWithSchema($) {
       if (schema && schema.recipeInstructions) {
         // Check if the script has the desired properties
         // You can add your specific condition here
+        console.log(scriptContent);
         return scriptContent;
       }
     } catch (error) {
