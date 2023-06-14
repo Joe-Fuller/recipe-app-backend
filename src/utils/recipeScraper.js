@@ -50,10 +50,11 @@ async function scrapeRecipeFromUrl(url) {
 
     console.log(recipeInfo);
     console.log("========================");
-    console.log(recipeInfo.children.data);
+    console.log(recipeInfo.children);
     console.log("========================");
     console.log(recipeInfo.children.text);
     console.log("========================");
+    console.log(Object.keys(recipeInfo));
     console.log(recipeInfo.name);
     console.log(recipeInfo.prepTime);
     console.log(recipeInfo.recipeIngredient);
