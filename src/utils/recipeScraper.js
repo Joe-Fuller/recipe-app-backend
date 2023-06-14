@@ -79,7 +79,9 @@ function findScriptWithSchema($) {
       if (schema && schema.recipeInstructions) {
         // Check if the script has the desired properties
         // You can add your specific condition here
-        console.log(scriptContent);
+        console.log(
+          "HERE WE MADE IT RHOUGH WEWOOO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        );
         return scriptContent;
       }
     } catch (error) {
