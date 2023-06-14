@@ -67,7 +67,7 @@ function findScriptWithSchema($) {
 
   // Iterate over each script tag
   for (let i = 0; i < scriptTags.length; i++) {
-    const scriptContent = $(scriptTags[i]).html();
+    const scriptContent = $(scriptTags[i]).text();
 
     // console.log("==============");
     // console.log(scriptContent);
