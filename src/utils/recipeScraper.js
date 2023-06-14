@@ -144,6 +144,8 @@ async function scrapeRecipeFromUrl(url) {
       imageLink: recipeImage,
     };
 
+    console.log(recipe);
+
     return recipe;
   } catch (error) {
     console.error("Error scraping recipe:", error);
