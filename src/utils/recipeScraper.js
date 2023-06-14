@@ -43,6 +43,7 @@ async function scrapeRecipeFromUrl(url) {
       recipeInfo = $(element).text();
     });
 
+    console.log(recipeInfo);
     console.log(Object.keys(recipeInfo));
 
     // Extract recipe information
