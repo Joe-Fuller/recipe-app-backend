@@ -78,7 +78,10 @@ function findScriptWithSchema($) {
       console.log("==================================");
       console.log(Object.keys(schema));
 
-      if (schema && schema.recipeInstructions) {
+      if (
+        schema &&
+        (schema.recipeInstructions || schema["@graph"].recipeInstructions)
+      ) {
         console.log("got in");
         // Check if the script has the desired properties
         // You can add your specific condition here
