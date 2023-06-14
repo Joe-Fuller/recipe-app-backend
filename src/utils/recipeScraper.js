@@ -68,16 +68,10 @@ function findScriptWithSchema($) {
   // Iterate over each script tag
   for (let i = 0; i < scriptTags.length; i++) {
     const scriptContent = $(scriptTags[i]).text();
-    console.log("==================================");
-    console.log(scriptContent);
-    console.log("++++++++++++++++++++++++++++++++++");
+
     // It just looks for recipeInstructions, should be specific enough
     try {
       const schema = JSON.parse(scriptContent);
-      console.log(schema);
-      console.log("==================================");
-      console.log(Object.keys(schema));
-      console.log(schema["@graph"]);
 
       if (
         schema &&
@@ -86,7 +80,7 @@ function findScriptWithSchema($) {
         console.log("got in");
         // Check if the script has the desired properties
         // You can add your specific condition here
-        return schema;
+        return schema["@graph"] || schema;
       }
     } catch (error) {
       // Ignore if the script content is not valid JSON
