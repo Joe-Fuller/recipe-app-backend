@@ -64,6 +64,9 @@ const combineTime = (prepTime, cookTime) => {
 function findScriptWithSchema($) {
   // Find all script tags on the page
   const scriptTags = $("script");
+  console.log("==============");
+  console.log(scriptTags);
+  console.log("==============");
 
   // Iterate over each script tag
   for (let i = 0; i < scriptTags.length; i++) {
