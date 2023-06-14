@@ -39,13 +39,13 @@ async function scrapeRecipeFromUrl(url) {
 
     // This gets all the recipe data according to a Google schema, use this always
     $('[data-testid="page-schema"]').each((index, element) => {
-      const recipeData = $(element).text();
+      const recipeInfo = $(element).text();
     });
 
-    console.log(Object.keys(recipeData));
+    console.log(Object.keys(recipeInfo));
 
     // Extract recipe information
-    const recipeName = recipeData.name;
+    const recipeName = recipeInfo.name;
 
     // Extract time to cook
     let hours = 0;
