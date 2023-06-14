@@ -37,32 +37,56 @@ async function scrapeRecipeFromUrl(url) {
 
     const $ = cheerio.load(html);
 
+    // ===================================
+    // Select the script element with the data-testid attribute
+    const scriptElement = $('script[data-testid="page-schema"]');
+
+    // Extract the JSON string from the script element
+    const jsonString = scriptElement.text();
+
+    // Parse the JSON string into an object
+    const recipeData = JSON.parse(jsonString);
+
+    // Access the recipe data
+    const recipeName = recipeData.name;
+    const recipeImage = recipeData.image.url;
+    const recipeDescription = recipeData.description;
+    const recipeIngredients = recipeData.recipeIngredient;
+    const recipeInstructions = recipeData.recipeInstructions;
+
+    console.log(recipeName);
+    console.log(recipeImage);
+    console.log(recipeDescription);
+    console.log(recipeIngredients);
+    console.log(recipeInstructions);
+    // ===================================
+
     // This gets all the recipe data according to a Google schema, use this always
     // $('[data-testid="page-schema"]').each((index, element) => {
     //   recipeInfo = $(element);
     // });
 
-    let recipeInfo;
+    // let recipeInfo;
 
-    $('[data-testid="page-schema"]').each((index, element) => {
-      recipeInfo = element;
-    });
+    // $('[data-testid="page-schema"]').each((index, element) => {
+    //   recipeInfo = element;
+    // });
 
-    console.log(recipeInfo);
-    console.log("========================");
-    console.log(recipeInfo.children["0"]);
-    console.log("========================");
-    console.log(recipeInfo.children.text);
-    console.log("========================");
-    console.log(Object.keys(recipeInfo));
-    console.log("========================");
-    console.log(Object.keys(recipeInfo.children["0"]));
-    console.log(recipeInfo.name);
-    console.log(recipeInfo.prepTime);
-    console.log(recipeInfo.recipeIngredient);
+    // console.log(recipeInfo);
+    // console.log("========================");
+    // console.log(recipeInfo.children["0"]);
+    // console.log("========================");
+    // console.log(recipeInfo.children.text);
+    // console.log("========================");
+    // console.log(Object.keys(recipeInfo));
+    // console.log("========================");
+    // console.log(Object.keys(recipeInfo.children["0"]));
+    // console.log(recipeInfo.name);
+    // console.log(recipeInfo.prepTime);
+    // console.log(recipeInfo.recipeIngredient);
 
     // Extract recipe information
-    const recipeName = recipeInfo.name;
+    // const recipeName = recipeInfo.name;
 
     // Extract time to cook
     let hours = 0;
@@ -101,13 +125,13 @@ async function scrapeRecipeFromUrl(url) {
     ).attr("src");
 
     // Create the recipe data object
-    const recipeData = {
-      name: recipeName,
-      timeToCook: timeToCook,
-      ingredients: aggregatedIngredients,
-      instructions: instructions,
-      imageLink: imageLink,
-    };
+    // const recipeData = {
+    //   name: recipeName,
+    //   timeToCook: timeToCook,
+    //   ingredients: aggregatedIngredients,
+    //   instructions: instructions,
+    //   imageLink: imageLink,
+    // };
 
     return recipeData;
   } catch (error) {
