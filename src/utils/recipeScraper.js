@@ -5,9 +5,9 @@ const he = require("he");
 
 // Unit correlation mapping
 const unitCorrelation = {
-  tsp: ["tsp", "teaspoon"],
-  tbsp: ["tbsp", "tablespoon"],
-  cup: ["cup"],
+  tsp: ["tsp", "tsps", "teaspoon", "teaspoons"],
+  tbsp: ["tbsp", "tbsps", "tablespoon", "tablespoons"],
+  cup: ["cup", "cups"],
   // Add more unit correlations as needed
 };
 
