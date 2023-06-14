@@ -75,17 +75,14 @@ function findScriptWithSchema($) {
 
       console.log(schema);
 
-      if (
-        schema &&
-        schema["@graph"] &&
-        schema["@graph"].length > 0 &&
-        schema["@graph"][0].recipeInstructions
-      ) {
+      if (schema && schema.recipeInstructions) {
         console.log("made it through");
         // Check if the script has the desired properties
         // You can add your specific condition here
         return scriptContent;
       }
+
+      console.log("post search");
     } catch (error) {
       // Ignore if the script content is not valid JSON
     }
