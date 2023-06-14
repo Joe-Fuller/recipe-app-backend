@@ -108,7 +108,7 @@ async function scrapeRecipeFromUrl(url) {
 
     // Access the recipe data
     const recipeName = recipeData.name;
-    const recipeImage = recipeData.image.url;
+    const recipeImage = recipeData.image.url || recipeData.image;
     const recipeIngredients = recipeData.recipeIngredient;
     const recipeInstructions = recipeData.recipeInstructions;
     const recipeTime = combineTime(recipeData.prepTime, recipeData.cookTime);
