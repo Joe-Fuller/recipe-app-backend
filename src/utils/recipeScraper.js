@@ -79,6 +79,15 @@ function findScriptWithSchema($) {
         // Check if the script has the desired properties
         // You can add your specific condition here
         return schema;
+      } else if (schema && schema["@graph"]) {
+        const graph = schema["@graph"];
+
+        for (let j = 0; j < graph.length; j++) {
+          if (graph[j] && graph[j].recipeInstructions) {
+            console.log("Got in");
+            return graph[j];
+          }
+        }
       }
     } catch (error) {
       // Ignore if the script content is not valid JSON
