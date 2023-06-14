@@ -108,7 +108,7 @@ async function scrapeRecipeFromUrl(url) {
 
     // Access the recipe data
     const recipeName = recipeData.name;
-    const recipeImage = recipeData.image.url || recipeData.image;
+    let recipeImage = recipeData.image.url || recipeData.image;
     const recipeIngredients = recipeData.recipeIngredient;
     const recipeInstructions = recipeData.recipeInstructions;
     const recipeTime = combineTime(recipeData.prepTime, recipeData.cookTime);
@@ -126,6 +126,11 @@ async function scrapeRecipeFromUrl(url) {
     recipeInstructions.forEach((instruction) => {
       formattedInstructions.push(instruction.text);
     });
+
+    // Make sure the image is a string, not an array
+    if (typeof recipeImage === Array) {
+      recipeImage = recipeImage[0];
+    }
 
     // Create the recipe object
     const recipe = {
