@@ -51,25 +51,21 @@ async function scrapeRecipeFromUrl(url) {
     // Access the recipe data
     const recipeName = recipeData.name;
     const recipeImage = recipeData.image.url;
-    const recipeTimeToCook = recipeData.name;
     const recipeIngredients = recipeData.recipeIngredient;
     const recipeInstructions = recipeData.recipeInstructions;
 
-    console.log(recipeName);
-    console.log(recipeImage);
-    console.log(recipeIngredients);
-    console.log(recipeInstructions);
+    console.log(recipeData.cookTime);
+    console.log(recipeData.prepTime);
 
     // Extract ingredients
     const ingredients = [];
-    $("[data-component='IngredientsList'] > section > ul > li").each(
-      (index, element) => {
-        const ingredientText = $(element).text().trim();
-        ingredients.push(splitIngredientString(ingredientText));
-      }
-    );
+    recipeIngredients.each((ingredient) => {
+      ingredients.push(splitIngredientString(ingredient));
+    });
 
     const aggregatedIngredients = aggregateIngredientAmounts(ingredients);
+
+    console.log(aggregatedIngredients);
 
     // Extract instructions
     const instructions = [];
