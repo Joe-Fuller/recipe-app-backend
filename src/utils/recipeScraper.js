@@ -68,12 +68,6 @@ function findScriptWithSchema($) {
   // Iterate over each script tag
   for (let i = 0; i < scriptTags.length; i++) {
     const scriptContent = $(scriptTags[i]).text();
-    if (i === 3) {
-      console.log("====================");
-      console.log($(scriptTags[i]));
-      console.log("====================");
-      console.log(scriptContent);
-    }
 
     // It just looks for recipeInstructions, should be specific enough
     try {
@@ -81,7 +75,6 @@ function findScriptWithSchema($) {
       console.log(schema.recipeInstructions);
 
       if (schema && schema.recipeInstructions) {
-        console.log("made it through");
         // Check if the script has the desired properties
         // You can add your specific condition here
         return scriptContent;
@@ -102,18 +95,15 @@ async function scrapeRecipeFromUrl(url) {
     const $ = cheerio.load(html);
 
     // Select the script element with the data-testid attribute
-    const scriptElement = $('script[data-testid="page-schema"]');
-    console.log("====================");
-    console.log(scriptElement);
-    console.log("====================");
+    // const scriptElement = $('script[data-testid="page-schema"]');
 
-    const script = findScriptWithSchema($);
+    const recipeData = findScriptWithSchema($);
 
-    // Extract the JSON string from the script element
-    const jsonString = scriptElement.text();
+    // // Extract the JSON string from the script element
+    // const jsonString = scriptElement.text();
 
-    // Parse the JSON string into an object
-    const recipeData = JSON.parse(jsonString);
+    // // Parse the JSON string into an object
+    // const recipeData = JSON.parse(jsonString);
 
     // Access the recipe data
     const recipeName = recipeData.name;
