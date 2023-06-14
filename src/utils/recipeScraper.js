@@ -38,9 +38,9 @@ async function scrapeRecipeFromUrl(url) {
     const $ = cheerio.load(html);
 
     // This gets all the recipe data according to a Google schema, use this always
-    $('[data-testid="page-schema"]').each((index, element) => {
-      recipeInfo = $(element);
-    });
+    // $('[data-testid="page-schema"]').each((index, element) => {
+    //   recipeInfo = $(element);
+    // });
 
     const recipeInfo = $('[data-testid="page-schema"');
 
