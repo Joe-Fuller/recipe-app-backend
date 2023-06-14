@@ -76,6 +76,7 @@ function findScriptWithSchema($) {
       const schema = JSON.parse(scriptContent);
       console.log(schema);
       console.log("==================================");
+      console.log(Object.keys(schema));
 
       if (schema && schema.recipeInstructions) {
         console.log("got in");
