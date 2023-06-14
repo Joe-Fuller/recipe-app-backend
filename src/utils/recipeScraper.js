@@ -64,13 +64,14 @@ const combineTime = (prepTime, cookTime) => {
 function findScriptWithSchema($) {
   // Find all script tags on the page
   const scriptTags = $("script");
-  console.log("==============");
-  console.log(scriptTags);
-  console.log("==============");
 
   // Iterate over each script tag
   for (let i = 0; i < scriptTags.length; i++) {
     const scriptContent = $(scriptTags[i]).html();
+
+    console.log("==============");
+    console.log(scriptContent);
+    console.log("==============");
 
     // It just looks for recipeInstructions, should be specific enough
     try {
