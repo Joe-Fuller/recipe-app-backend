@@ -67,13 +67,13 @@ function findScriptWithSchema($) {
 
   // Iterate over each script tag
   for (let i = 0; i < scriptTags.length; i++) {
+    const scriptContent = $(scriptTags[i]).text();
     if (i === 3) {
       console.log("====================");
       console.log($(scriptTags[i]));
       console.log("====================");
+      console.log(scriptContent);
     }
-    const scriptContent = $(scriptTags[i]).text();
-    console.log(scriptContent);
 
     // It just looks for recipeInstructions, should be specific enough
     try {
