@@ -79,6 +79,7 @@ function findScriptWithSchema($) {
         "here it is parsed @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'"
       );
       console.log(schema);
+      console.log(schema.recipeInstructions);
       if (schema && schema.recipeInstructions) {
         // Check if the script has the desired properties
         // You can add your specific condition here
