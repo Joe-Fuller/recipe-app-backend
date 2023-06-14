@@ -68,24 +68,17 @@ function findScriptWithSchema($) {
   // Iterate over each script tag
   for (let i = 0; i < scriptTags.length; i++) {
     const scriptContent = $(scriptTags[i]).text();
-    console.log("==============");
-    console.log(scriptContent);
-    console.log("==============");
 
     // It just looks for recipeInstructions, should be specific enough
     try {
       const schema = JSON.parse(scriptContent);
-      console.log(
-        "here it is parsed @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'"
-      );
+
       console.log(schema);
-      console.log(schema.recipeInstructions);
+
       if (schema && schema.recipeInstructions) {
+        console.log("made it through");
         // Check if the script has the desired properties
         // You can add your specific condition here
-        console.log(
-          "HERE WE MADE IT RHOUGH WEWOOO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        );
         return scriptContent;
       }
     } catch (error) {
