@@ -69,7 +69,7 @@ function findScriptWithSchema($) {
   for (let i = 0; i < scriptTags.length; i++) {
     if (i === 3) {
       console.log("====================");
-      console.log(scriptTags[i]);
+      console.log(scriptTags[i].text());
       console.log("====================");
     }
     const scriptContent = $(scriptTags[i]).html();
