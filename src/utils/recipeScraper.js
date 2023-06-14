@@ -70,8 +70,6 @@ function findScriptWithSchema($) {
     const scriptContent = $(scriptTags[i]).text();
     console.log("==============");
     console.log(scriptContent);
-    console.log("midway babayyyyyyyyyyyyyyyyyyyyyyyyy");
-    console.log(JSON.parse(scriptContent));
     console.log("==============");
 
     // It just looks for recipeInstructions, should be specific enough
