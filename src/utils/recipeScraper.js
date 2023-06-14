@@ -3,13 +3,31 @@ const cheerio = require("cheerio");
 const splitIngredientString = require("./splitIngredientString");
 const he = require("he");
 
-// Helper function to aggregate ingredient amounts
+// Unit correlation mapping
+const unitCorrelation = {
+  tsp: ["tsp", "teaspoon"],
+  tbsp: ["tbsp", "tablespoon"],
+  cup: ["cup"],
+  // Add more unit correlations as needed
+};
+
+// Helper function to find the correlated unit for a given unit
+function findCorrelatedUnit(unit) {
+  for (const [baseUnit, correlatedUnits] of Object.entries(unitCorrelation)) {
+    if (correlatedUnits.includes(unit.toLowerCase())) {
+      return baseUnit;
+    }
+  }
+  return unit; // If no correlation is found, return the original unit
+}
+
+// Helper function to add up ingredient amounts
 function aggregateIngredientAmounts(ingredients) {
   const aggregatedIngredients = [];
   const ingredientMap = new Map();
 
   for (const ingredient of ingredients) {
-    const key = `${ingredient.name} ${ingredient.units}`;
+    const key = `${ingredient.name} ${findCorrelatedUnit(ingredient.units)}`;
     const existingIngredient = ingredientMap.get(key);
 
     if (existingIngredient) {
