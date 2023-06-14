@@ -102,15 +102,18 @@ async function scrapeRecipeFromUrl(url) {
     const html = response.data;
 
     const $ = cheerio.load(html);
-    he.decode($);
 
     const recipeData = findScriptWithSchema($);
 
-    // Access the recipe data
-    const recipeName = recipeData.name;
-    let recipeImage = recipeData.image.url || recipeData.image;
-    const recipeIngredients = recipeData.recipeIngredient;
-    const recipeInstructions = recipeData.recipeInstructions;
+    // Access the recipe data and decode HTML entities
+    const recipeName = he.decode(recipeData.name);
+    const recipeImage = he.decode(recipeData.image.url || recipeData.image);
+    const recipeIngredients = recipeData.recipeIngredient.map((ingredient) =>
+      he.decode(ingredient)
+    );
+    const recipeInstructions = recipeData.recipeInstructions.map(
+      (instruction) => he.decode(instruction.text)
+    );
     const recipeTime = combineTime(recipeData.prepTime, recipeData.cookTime);
 
     // Extract ingredients
