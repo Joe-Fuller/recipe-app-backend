@@ -93,12 +93,18 @@ async function scrapeRecipeFromUrl(url) {
 
     const aggregatedIngredients = aggregateIngredientAmounts(ingredients);
 
+    // Format instructions
+    const formattedInstructions = [];
+    recipeInstructions.forEach((instruction) => {
+      formattedInstructions.push(instruction.step);
+    });
+
     // Create the recipe object
     const recipe = {
       name: recipeName,
       timeToCook: recipeTime,
       ingredients: aggregatedIngredients,
-      instructions: recipeInstructions,
+      instructions: formattedInstructions,
       imageLink: recipeImage,
     };
 
