@@ -96,6 +96,7 @@ async function scrapeRecipeFromUrl(url) {
     // Format instructions
     const formattedInstructions = [];
     recipeInstructions.forEach((instruction) => {
+      console.log(instruction);
       formattedInstructions.push(instruction.step);
     });
 
