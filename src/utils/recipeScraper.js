@@ -124,12 +124,6 @@ async function scrapeRecipeFromUrl(url) {
 
     const aggregatedIngredients = aggregateIngredientAmounts(ingredients);
 
-    // Format instructions
-    const formattedInstructions = [];
-    recipeInstructions.forEach((instruction) => {
-      formattedInstructions.push(instruction.text);
-    });
-
     // Make sure the image is a string, not an array
     if (Array.isArray(recipeImage)) {
       recipeImage = recipeImage[0];
