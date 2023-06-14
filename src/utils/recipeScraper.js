@@ -128,7 +128,7 @@ async function scrapeRecipeFromUrl(url) {
     });
 
     // Make sure the image is a string, not an array
-    if (typeof recipeImage === Array) {
+    if (Array.isArray(recipeImage)) {
       recipeImage = recipeImage[0];
     }
 
