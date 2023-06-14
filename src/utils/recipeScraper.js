@@ -77,6 +77,7 @@ function findScriptWithSchema($) {
       console.log(schema);
       console.log("==================================");
       console.log(Object.keys(schema));
+      console.log(schema["@graph"]);
 
       if (
         schema &&
