@@ -30,6 +30,36 @@ const aggregateIngredientAmounts = (ingredients) => {
   return aggregatedIngredients;
 };
 
+const combineTime = (prepTime, cookTime) => {
+  // Regular expression to extract hours and minutes from time strings
+  const timeRegex = /PT(\d+H)?(\d+M)?/;
+
+  // Extract hours and minutes from prep time
+  const prepTimeMatch = prepTime.match(timeRegex);
+  const prepHours = prepTimeMatch[1] ? parseInt(prepTimeMatch[1]) : 0;
+  const prepMinutes = prepTimeMatch[2] ? parseInt(prepTimeMatch[2]) : 0;
+
+  // Extract hours and minutes from cook time
+  const cookTimeMatch = cookTime.match(timeRegex);
+  const cookHours = cookTimeMatch[1] ? parseInt(cookTimeMatch[1]) : 0;
+  const cookMinutes = cookTimeMatch[2] ? parseInt(cookTimeMatch[2]) : 0;
+
+  // Calculate total hours and minutes
+  const totalHours = prepHours + cookHours;
+  const totalMinutes = prepMinutes + cookMinutes;
+
+  // Format the combined time
+  let timeString = "";
+  if (totalHours > 0) {
+    timeString += `${totalHours}H`;
+  }
+  if (totalMinutes > 0) {
+    timeString += ` ${totalMinutes}M`;
+  }
+
+  return timeString.trim();
+};
+
 async function scrapeRecipeFromUrl(url) {
   try {
     const response = await axios.get(url);
@@ -53,13 +83,15 @@ async function scrapeRecipeFromUrl(url) {
     const recipeImage = recipeData.image.url;
     const recipeIngredients = recipeData.recipeIngredient;
     const recipeInstructions = recipeData.recipeInstructions;
+    const recipeTime = combineTime(recipeData.prepTime, recipeData.cookTime);
 
     console.log(recipeData.cookTime);
     console.log(recipeData.prepTime);
+    console.log(recipeTime);
 
     // Extract ingredients
     const ingredients = [];
-    recipeIngredients.each((ingredient) => {
+    recipeIngredients.forEach((ingredient) => {
       ingredients.push(splitIngredientString(ingredient));
     });
 
@@ -67,22 +99,13 @@ async function scrapeRecipeFromUrl(url) {
 
     console.log(aggregatedIngredients);
 
-    // Extract instructions
-    const instructions = [];
-    $("[data-placement='MethodList'] > div > ul > li > div > p").each(
-      (index, element) => {
-        const instruction = $(element).text().trim();
-        instructions.push(instruction);
-      }
-    );
-
     // Create the recipe object
     const recipe = {
       name: recipeName,
-      timeToCook: timeToCook,
+      timeToCook: recipeTime,
       ingredients: aggregatedIngredients,
-      instructions: instructions,
-      imageLink: imageLink,
+      instructions: recipeInstructions,
+      imageLink: recipeImage,
     };
 
     return recipe;
