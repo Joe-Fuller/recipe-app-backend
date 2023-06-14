@@ -42,7 +42,7 @@ async function scrapeRecipeFromUrl(url) {
     //   recipeInfo = $(element);
     // });
 
-    const recipeInfo = $('[data-testid="page-schema"]');
+    const recipeInfo = $('[data-testid="page-schema"]:first');
 
     console.log(recipeInfo);
     console.log("========================");
