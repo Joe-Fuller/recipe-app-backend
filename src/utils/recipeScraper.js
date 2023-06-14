@@ -27,7 +27,6 @@ function aggregateIngredientAmounts(ingredients) {
   const ingredientMap = new Map();
 
   for (const ingredient of ingredients) {
-    console.log(ingredient, ingredient.units);
     const key = `${ingredient.name} ${findCorrelatedUnit(ingredient.units)}`;
     const existingIngredient = ingredientMap.get(key);
 
