@@ -76,6 +76,7 @@ function findScriptWithSchema($) {
     // It just looks for recipeInstructions, should be specific enough
     try {
       const schema = JSON.parse(scriptContent);
+      console.log(schema);
       if (schema && schema.recipeInstructions) {
         // Check if the script has the desired properties
         // You can add your specific condition here
