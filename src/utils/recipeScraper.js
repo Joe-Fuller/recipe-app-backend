@@ -75,7 +75,8 @@ function findScriptWithSchema($) {
       const schema = JSON.parse(scriptContent);
 
       console.log(schema);
-      console.log(schema["@graph"].recipeIngredient);
+      console.log("and the graph ================");
+      console.log(schema["@graph"]);
 
       if (schema && schema.recipeInstructions) {
         console.log("made it through");
