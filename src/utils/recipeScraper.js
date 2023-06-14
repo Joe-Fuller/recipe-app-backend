@@ -71,18 +71,10 @@ function findScriptWithSchema($) {
       console.log(scriptTags[i]);
     }
     const scriptContent = $(scriptTags[i]).html();
-    if (i === 3) {
-      console.log(scriptContent);
-      console.log(JSON.parse(scriptContent));
-    }
 
     // It just looks for recipeInstructions, should be specific enough
     try {
       const schema = JSON.parse(scriptContent);
-
-      console.log(schema);
-      console.log("and the graph ================");
-      console.log(schema["@graph"]);
 
       if (schema && schema.recipeInstructions) {
         console.log("made it through");
@@ -90,8 +82,6 @@ function findScriptWithSchema($) {
         // You can add your specific condition here
         return scriptContent;
       }
-
-      console.log("post search");
     } catch (error) {
       // Ignore if the script content is not valid JSON
     }
@@ -111,16 +101,14 @@ async function scrapeRecipeFromUrl(url) {
     const scriptElement = $('script[data-testid="page-schema"]');
 
     const script = findScriptWithSchema($);
-    // console.log(script);
+    console.log(script);
 
     // Extract the JSON string from the script element
     const jsonString = scriptElement.text();
-    console.log(jsonString);
+    // console.log(jsonString);
 
     // Parse the JSON string into an object
     const recipeData = JSON.parse(jsonString);
-
-    console.log(jsonString);
 
     // Access the recipe data
     const recipeName = recipeData.name;
