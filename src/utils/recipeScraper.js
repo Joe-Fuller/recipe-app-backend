@@ -72,15 +72,13 @@ function findScriptWithSchema($) {
     // It just looks for recipeInstructions, should be specific enough
     try {
       const schema = JSON.parse(scriptContent);
+      console.log(schema);
 
-      if (
-        schema &&
-        (schema.recipeInstructions || schema["@graph"].recipeInstructions)
-      ) {
+      if (schema && schema.recipeInstructions) {
         console.log("got in");
         // Check if the script has the desired properties
         // You can add your specific condition here
-        return schema["@graph"] || schema;
+        return schema;
       }
     } catch (error) {
       // Ignore if the script content is not valid JSON
