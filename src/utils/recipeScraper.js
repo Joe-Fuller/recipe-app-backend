@@ -101,15 +101,14 @@ async function scrapeRecipeFromUrl(url) {
 
     // Select the script element with the data-testid attribute
     const scriptElement = $('script[data-testid="page-schema"]');
+    console.log("====================");
+    console.log(scriptElement);
+    console.log("====================");
 
     const script = findScriptWithSchema($);
-    console.log("====================");
-    console.log(script);
-    console.log("====================");
 
     // Extract the JSON string from the script element
     const jsonString = scriptElement.text();
-    // console.log(jsonString);
 
     // Parse the JSON string into an object
     const recipeData = JSON.parse(jsonString);
