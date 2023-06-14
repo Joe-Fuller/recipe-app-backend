@@ -76,8 +76,6 @@ async function scrapeRecipeFromUrl(url) {
     // Parse the JSON string into an object
     const recipeData = JSON.parse(jsonString);
 
-    console.log(Object.keys(recipeData));
-
     // Access the recipe data
     const recipeName = recipeData.name;
     const recipeImage = recipeData.image.url;
@@ -107,8 +105,6 @@ async function scrapeRecipeFromUrl(url) {
       instructions: formattedInstructions,
       imageLink: recipeImage,
     };
-
-    console.log(recipe);
 
     return recipe;
   } catch (error) {
