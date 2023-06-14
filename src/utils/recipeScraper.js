@@ -93,19 +93,7 @@ async function scrapeRecipeFromUrl(url) {
 
     const $ = cheerio.load(html);
 
-    // Select the script element with the data-testid attribute
-    // const scriptElement = $('script[data-testid="page-schema"]');
-
     const recipeData = findScriptWithSchema($);
-
-    // // Extract the JSON string from the script element
-    // const jsonString = scriptElement.text();
-
-    // // Parse the JSON string into an object
-    // const recipeData = JSON.parse(jsonString);
-
-    console.log(recipeData);
-    console.log(Object.keys(recipeData));
 
     // Access the recipe data
     const recipeName = recipeData.name;
