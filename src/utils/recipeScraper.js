@@ -30,7 +30,6 @@ function aggregateIngredientAmounts(ingredients) {
     console.log(ingredient, ingredient.units);
     const key = `${ingredient.name} ${findCorrelatedUnit(ingredient.units)}`;
     const existingIngredient = ingredientMap.get(key);
-    console.log("exisiting ingredient ===============");
 
     if (existingIngredient) {
       existingIngredient.amount = (
@@ -39,7 +38,9 @@ function aggregateIngredientAmounts(ingredients) {
     } else {
       ingredientMap.set(key, {
         ...ingredient,
+
         amount: ingredient.amount.toString(),
+        units: findCorrelatedUnit(ingredient.units),
       });
     }
   }
