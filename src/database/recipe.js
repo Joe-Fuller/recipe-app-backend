@@ -23,23 +23,17 @@ async function createRecipe(recipeData) {
 
     // Insert ingredients into the Ingredients table
     for (const ingredient of recipeData.ingredients) {
-      const ingredientName = ingredient.name || " ";
-      const ingredientAmount = ingredient.amount || " ";
-      const ingredientUnits = ingredient.units || " ";
-
       await connection.execute(
         "INSERT INTO Ingredients (recipe_id, ingredient_name, ingredient_amount, ingredient_units) VALUES (?, ?, ?, ?)",
-        [recipeId, ingredientName, ingredientAmount, ingredientUnits]
+        [recipeId, ingredient.name, ingredient.amount, ingredient.units]
       );
     }
 
     // Insert instructions into the Instructions table
     for (const instruction of recipeData.instructions) {
-      const instructionText = instruction || " ";
-
       await connection.execute(
         "INSERT INTO Instructions (recipe_id, instruction_text) VALUES (?, ?)",
-        [recipeId, instructionText]
+        [recipeId, instruction]
       );
     }
 
