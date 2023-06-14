@@ -35,9 +35,11 @@ async function createRecipe(recipeData) {
 
     // Insert instructions into the Instructions table
     for (const instruction of recipeData.instructions) {
+      const instructionText = instruction || " ";
+
       await connection.execute(
         "INSERT INTO Instructions (recipe_id, instruction_text) VALUES (?, ?)",
-        [recipeId, instruction]
+        [recipeId, instructionText]
       );
     }
 
