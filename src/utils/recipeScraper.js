@@ -116,6 +116,8 @@ async function scrapeRecipeFromUrl(url) {
     );
     const recipeTime = combineTime(recipeData.prepTime, recipeData.cookTime);
 
+    console.log(recipeInstructions);
+
     // Extract ingredients
     const ingredients = [];
     recipeIngredients.forEach((ingredient) => {
@@ -130,6 +132,8 @@ async function scrapeRecipeFromUrl(url) {
       formattedInstructions.push(instruction.text);
     });
 
+    console.log(formattedInstructions);
+
     // Make sure the image is a string, not an array
     if (Array.isArray(recipeImage)) {
       recipeImage = recipeImage[0];
@@ -143,8 +147,6 @@ async function scrapeRecipeFromUrl(url) {
       instructions: formattedInstructions,
       imageLink: recipeImage,
     };
-
-    console.log(recipe);
 
     return recipe;
   } catch (error) {
