@@ -76,7 +76,7 @@ function findScriptWithSchema($) {
       if (schema && schema.recipeInstructions) {
         // Check if the script has the desired properties
         // You can add your specific condition here
-        return scriptContent;
+        return schema;
       }
     } catch (error) {
       // Ignore if the script content is not valid JSON
