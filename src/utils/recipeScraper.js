@@ -142,9 +142,7 @@ async function scrapeRecipeFromUrl(url) {
       ingredients.push(splitIngredientString(ingredient));
     });
 
-    console.log("aggregating");
     const aggregatedIngredients = aggregateIngredientAmounts(ingredients);
-    console.log(aggregatedIngredients);
 
     // Make sure the image is a string, not an array
     if (Array.isArray(recipeImage)) {
