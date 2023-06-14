@@ -113,6 +113,8 @@ async function scrapeRecipeFromUrl(url) {
     // Parse the JSON string into an object
     const recipeData = JSON.parse(jsonString);
 
+    console.log(jsonString);
+
     // Access the recipe data
     const recipeName = recipeData.name;
     const recipeImage = recipeData.image.url;
