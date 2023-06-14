@@ -37,7 +37,9 @@ async function scrapeRecipeFromUrl(url) {
 
     const $ = cheerio.load(html);
 
-    console.log($('[data-testid="page-schema"]'));
+    $('[data-testid="page-schema"]').each((index, element) => {
+      console.log(element);
+    });
 
     // Extract recipe information
     const recipeName = $("h1").text();
