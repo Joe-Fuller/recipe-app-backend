@@ -60,6 +60,31 @@ const combineTime = (prepTime, cookTime) => {
   return timeString.trim();
 };
 
+// Function to find the script tag with the desired schema
+function findScriptWithSchema($) {
+  // Find all script tags on the page
+  const scriptTags = $("script");
+
+  // Iterate over each script tag
+  for (let i = 0; i < scriptTags.length; i++) {
+    const scriptContent = $(scriptTags[i]).html();
+
+    // It just looks for recipeInstructions, should be specific enough
+    try {
+      const schema = JSON.parse(scriptContent);
+      if (schema && schema.recipeInstructions) {
+        // Check if the script has the desired properties
+        // You can add your specific condition here
+        return scriptContent;
+      }
+    } catch (error) {
+      // Ignore if the script content is not valid JSON
+    }
+  }
+
+  return null;
+}
+
 async function scrapeRecipeFromUrl(url) {
   try {
     const response = await axios.get(url);
@@ -69,6 +94,9 @@ async function scrapeRecipeFromUrl(url) {
 
     // Select the script element with the data-testid attribute
     const scriptElement = $('script[data-testid="page-schema"]');
+
+    const script = findScriptWithSchema($);
+    console.log(script);
 
     // Extract the JSON string from the script element
     const jsonString = scriptElement.text();
