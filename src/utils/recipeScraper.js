@@ -68,11 +68,14 @@ function findScriptWithSchema($) {
   // Iterate over each script tag
   for (let i = 0; i < scriptTags.length; i++) {
     const scriptContent = $(scriptTags[i]).text();
+    console.log("==================================");
     console.log(scriptContent);
-
+    console.log("++++++++++++++++++++++++++++++++++");
     // It just looks for recipeInstructions, should be specific enough
     try {
       const schema = JSON.parse(scriptContent);
+      console.log(schema);
+      console.log("==================================");
 
       if (schema && schema.recipeInstructions) {
         console.log("got in");
