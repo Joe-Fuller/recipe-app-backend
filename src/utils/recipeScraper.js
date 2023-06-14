@@ -100,9 +100,9 @@ async function scrapeRecipeFromUrl(url) {
   try {
     const response = await axios.get(url);
     const html = response.data;
-    he.decode(html);
 
     const $ = cheerio.load(html);
+    he.decode($);
 
     const recipeData = findScriptWithSchema($);
 
